@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/wethu/projects/hwms/app/serializers/jsonable'
-let g:netrw_dirhist_2='/home/wethu/projects/hwms/app/serializers'
-let g:netrw_dirhist_3='/home/wethu/projects/hwms/app'
-let g:netrw_dirhist_4='/home/wethu/projects/hwms/app/forms'
-let g:netrw_dirhist_5='/home/wethu/projects/hwms/app/forms/challenges'
-let g:netrw_dirhist_6='/home/wethu/projects/hwms/app/models/concerns/user'
-let g:netrw_dirhist_7='/home/wethu/projects/hwms'
