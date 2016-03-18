@@ -6,7 +6,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
-Plugin 'gmarik/vundle' 
+Plugin 'gmarik/vundle'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'jpo/vim-railscasts-theme'
@@ -16,10 +16,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'ervandew/supertab'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'danro/rename.vim' 
+Plugin 'danro/rename.vim'
 Plugin 'bling/vim-airline'
 
-call vundle#end() 
+call vundle#end()
 filetype plugin indent on
 
 " Settings
@@ -43,7 +43,7 @@ set expandtab
 
 " Autocmds
 
-autocmd BufWritePre * :%s/\s+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Keymappings
 
@@ -75,7 +75,7 @@ nmap <leader>sj   :rightbelow new<CR>
 
 nmap <leader>w    <c-w>=
 
-" Commentary comment block 
+" Commentary comment block
 vnoremap <leader>/ :Commentary<cr>
 
 " Rspec vim
