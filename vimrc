@@ -19,6 +19,7 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'danro/rename.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'slim-template/vim-slim'
 
 call vundle#end()
 filetype plugin indent on
