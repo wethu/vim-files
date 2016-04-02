@@ -20,6 +20,7 @@ Plugin 'danro/rename.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'slim-template/vim-slim'
+Plugin 'godlygeek/tabular'
 
 call vundle#end()
 filetype plugin indent on
@@ -98,7 +99,7 @@ vnoremap <leader>/ :Commentary<cr>
 map <leader>t :call RunCurrentSpecFile()<cr>
 map <leader>s :call RunNearestSpec()<cr>
 map <leader>l :call RunLastSpec()<cr>
-map <leader>a :call RunAllSpecs()<cr>
+" map <leader>a :call RunAllSpecs()<cr>
 let g:rspec_command = "!bundle exec rspec {spec}"
 
 
@@ -107,7 +108,6 @@ nnoremap <leader><leader> <C-^>
 
 " Syntastic settings
 set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%{fugitive#statusline()}
 set statusline+=%*
 
@@ -132,3 +132,10 @@ let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
+
+" Tabular mappings (default)
+
+nmap <leader>a= :Tabularize /=<cr>
+vmap <leader>a= :Tabularize /=<cr>
+nmap <leader>a: :Tabularize /:\zs<cr>
+vmap <leader>a: :Tabularize /:\zs<cr>
