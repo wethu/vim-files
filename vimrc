@@ -21,6 +21,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'slim-template/vim-slim'
 Plugin 'godlygeek/tabular'
+Plugin 'elixir-lang/vim-elixir'
 
 call vundle#end()
 filetype plugin indent on
@@ -59,7 +60,6 @@ set t_ti= t_te=
 let &t_Co=256
 
 " Autocmds
-
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Keymappings
@@ -103,6 +103,7 @@ map <leader>l :call RunLastSpec()<cr>
 let g:rspec_command = "!bundle exec rspec {spec}"
 
 
+
 " Open alternative file
 nnoremap <leader><leader> <C-^>
 
@@ -139,3 +140,6 @@ nmap <leader>a= :Tabularize /=<cr>
 vmap <leader>a= :Tabularize /=<cr>
 nmap <leader>a: :Tabularize /:\zs<cr>
 vmap <leader>a: :Tabularize /:\zs<cr>
+
+" New shortcuts for rails
+
