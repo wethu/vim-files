@@ -12,6 +12,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'jpo/vim-railscasts-theme'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'ervandew/supertab'
@@ -22,6 +23,12 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'slim-template/vim-slim'
 Plugin 'godlygeek/tabular'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 filetype plugin indent on
@@ -52,9 +59,11 @@ set tabstop=2
 set shiftwidth=2
 set re=1
 set eol
+set showcmd
 set expandtab
 set backspace=indent,eol,start
 set shell=bash
+set nohidden
 " Set termcap mode
 set t_ti= t_te=
 let &t_Co=256
@@ -67,6 +76,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 " I want to use ; instead of : and I want the original ; as ;;
 map ; :
 noremap ;; ;
+
+
 
 " Remove hlsearch quickly
 noremap <leader>h :nohlsearch<cr>
@@ -102,6 +113,12 @@ map <leader>l :call RunLastSpec()<cr>
 " map <leader>a :call RunAllSpecs()<cr>
 let g:rspec_command = "!bundle exec rspec {spec}"
 
+" Rubocop! :policecar:
+"
+let g:vimrubocop_config = "~/.rubocop.yml"
+let g:vimrubocop_keymap = 0
+
+nmap <leader>r :RuboCop<CR>
 
 
 " Open alternative file
