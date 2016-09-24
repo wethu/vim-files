@@ -108,7 +108,7 @@ vnoremap <leader>/ :Commentary<cr>
 
 " Rspec vim
 map <leader>t :call RunCurrentSpecFile()<cr>
-map <leader>s :call RunNearestSpec()<cr>
+map <leader>T :call RunNearestSpec()<cr>
 map <leader>l :call RunLastSpec()<cr>
 " map <leader>a :call RunAllSpecs()<cr>
 let g:rspec_command = "!bundle exec rspec {spec}"
@@ -123,6 +123,10 @@ nmap <leader>r :RuboCop<CR>
 
 " Open alternative file
 nnoremap <leader><leader> <C-^>
+
+" Easy Motion stomping on my alternative file
+map <Leader> <Plug>(easymotion-prefix)
+nmap s <Plug>(easymotion-s)
 
 " Syntastic settings
 set statusline+=%#warningmsg#
