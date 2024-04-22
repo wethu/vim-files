@@ -1,5 +1,5 @@
 # Vim Files
 
 Plugins:
-[Vundle](http://gmarik/vundle)
+[Vundle](https://github.com/VundleVim/Vundle.vim)
 

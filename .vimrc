@@ -3,12 +3,16 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
+set re=2
+set regexpengine=0
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'rbong/vim-flog'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'jpo/vim-railscasts-theme'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-rails'
@@ -29,6 +33,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'stephpy/vim-yaml'
 
 call vundle#end()
 filetype plugin indent on
@@ -37,7 +42,10 @@ filetype plugin indent on
 let mapleader = ','
 syntax on
 colorscheme railscasts
-:let &colorcolumn=join(range(101,101),",")
+hi Normal guibg=NONE ctermbg=NONE
+
+let &colorcolumn=join(range(101,101),",")
+let g:snipMate = { 'snippet_version' : 1 }
 
 set splitbelow
 set splitright
