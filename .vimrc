@@ -39,6 +39,9 @@ Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'styled-components/vim-styled-components' " Sounds good?
 
+" ALE
+Plug 'dense-analysis/ale'
+
 " Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'scrooloose/syntastic'
@@ -68,6 +71,22 @@ hi Normal guibg=NONE ctermbg=NONE
 
 let &colorcolumn=join(range(101,101),",")
 let g:snipMate = { 'snippet_version' : 1 }
+
+let g:ale_cpp_clang_format_options = '-style=file'
+
+let g:ale_linters = {
+      \ 'c': ['clang-tidy'],
+      \ 'h': ['clang-tidy'],
+      \ 'cpp': ['clang-tidy'],
+      \ }
+let g:ale_fixers = {
+      \ 'c': ['clang-format'],
+      \ 'h': ['clang-format'],
+      \ 'cpp': ['clang-format'],
+      \ }
+let g:ale_fix_on_save = 1
+let g:ale_set_quickfix = 0
+let g:ale_hover_cursor = 1
 
 set background=dark
 set ttyfast
@@ -189,6 +208,16 @@ let g:fugitive_pty = 0
 
 " Delete empty lines after save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" " Automatically format code on save
+function! FormatAndSave()
+  let save_cursor = getpos('.')
+  echo save_cursor
+  normal gg=G
+  call setpos('.', save_cursor)
+endfunction
+
+autocmd BufWritePre *.c,*.h,*.cpp call FormatAndSave()
 
 " Fix syntax highlight for Coc plugin floating errors
 hi CocErrorFloat guifg=Magenta guibg=Magenta
