@@ -60,9 +60,6 @@ Plug 'tomtom/tlib_vim'
 call plug#end()
 filetype plugin indent on
 
-" Quickly make it so
-nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
-
 " Settings
 let mapleader = ','
 syntax on
@@ -99,9 +96,6 @@ set numberwidth=4
 set ruler
 set cursorline
 set mouse=nvi
-
-" set <F5> set invpaste paste?<CR>
-
 set showmode
 set showmatch
 set showcmd
@@ -133,11 +127,6 @@ set laststatus=2 " Always show status line (Airline)
 " Allow copy+paste from system clipboard
 set clipboard=unnamed
 
-" Spellcheck for markdown
-au BufRead,BufNewFile *.md setlocal spell
-
-nnoremap <silent><leader>2 :e ~/.vimrc<CR>
-
 set splitbelow
 set splitright
 set history=10000
@@ -153,6 +142,12 @@ let &t_Co=256
 
 set rtp+=~/.fzf
 
+" Spellcheck for markdown
+au BufRead,BufNewFile *.md,*.rb,*.js,*.ts,*.tsx,*.jsx setlocal spell
+
+nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
+nnoremap <silent><leader>2 :e ~/.vimrc<CR>
+
 " Map fzf search to CtrlP
 nnoremap <C-p> :GFiles<Cr>
 
@@ -162,11 +157,8 @@ nnoremap <C-g> :Rg <Cr>
 " Extra <CR> is for disabling /"Press ENTER or type command to continue/"
 nnoremap <silent><leader>e :Exp<CR><CR>
 
-
 " CoC extensions
-
 let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json']
-
 
 " Add CoC Prettier if prettier is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
@@ -201,7 +193,6 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Format
 nmap <leader>f   :CocCommand prettier.formatFile<CR>
-
 
 " Fix some weird error with Fugitive
 let g:fugitive_pty = 0
@@ -246,7 +237,6 @@ noremap <leader>h :nohlsearch<cr>
 nnoremap <C-Y> "*y
 vnoremap <C-Y> "*y
 
-
 " Splits navigation with ctrl+hjkl
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -254,7 +244,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Splits creation
-
 " window
 nmap <leader>swh  :topleft vnew<cr>
 nmap <leader>swl  :botright vnew<CR>
@@ -278,10 +267,6 @@ nnoremap <leader><leader> <C-^>
 map <Leader> <Plug>(easymotion-prefix)
 nmap s <Plug>(easymotion-s)
 
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{fugitive#statusline()}
-set statusline+=%*
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -297,7 +282,6 @@ let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
 
 " Tabular mappings (default)
-
 nmap <leader>a= :Tabularize /=<cr>
 vmap <leader>a= :Tabularize /=<cr>
 nmap <leader>a: :Tabularize /:\zs<cr>
