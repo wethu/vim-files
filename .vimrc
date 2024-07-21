@@ -227,8 +227,35 @@ function! Bin2Hex()
   call setline('.', substitute(getline('.'), '\<' . bin_num . '\>', hex_num, ''))
   call setpos('.', cursor)
 endfunction
+nnoremap <Leader>X :call Bin2Hex()<CR>
 
-nnoremap <Leader>C :call Bin2Hex()<CR>
+function! Bin2Dec()
+  let cursor = getpos('.')
+
+  normal! B
+  let start_c = col('.')
+  normal! e
+  let end_c = col('.')
+
+  let bin_num = getline('.')[start_c - 1:end_c - 1]
+
+  let dec_num = str2nr(bin_num, 2)
+
+  call setline('.', substitute(getline('.'), '\<' . bin_num . '\>', dec_num, ''))
+  call setpos('.', cursor)
+endfunction
+nnoremap <Leader>D :call Bin2Dec()<CR>
+
+function Num2Bin()
+  let num = expand('<cword>')
+
+  if !empty(num)
+    let binary = printf('%b', num)
+    execute 'silent! normal! diw'
+    execute 'silent! normal! i' . '0b' . binary
+  endif
+endfunction
+nnoremap <Leader>B :call Num2Bin()<CR>
 " Fix syntax highlight for Coc plugin floating errors
 hi CocErrorFloat guifg=Magenta guibg=Magenta
 
