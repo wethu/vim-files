@@ -210,6 +210,25 @@ endfunction
 
 autocmd BufWritePre *.c,*.h,*.cpp call FormatAndSave()
 
+function! Bin2Hex()
+  let cursor = getpos('.')
+
+  normal! B
+  let start_c = col('.')
+  normal! e
+  let end_c = col('.')
+
+  let bin_num = getline('.')[start_c - 1:end_c - 1]
+
+  let dec_num = str2nr(bin_num, 2)
+
+  let hex_num = printf("0x%X", dec_num)
+
+  call setline('.', substitute(getline('.'), '\<' . bin_num . '\>', hex_num, ''))
+  call setpos('.', cursor)
+endfunction
+
+nnoremap <Leader>C :call Bin2Hex()<CR>
 " Fix syntax highlight for Coc plugin floating errors
 hi CocErrorFloat guifg=Magenta guibg=Magenta
 
