@@ -29,6 +29,8 @@ Plug 'junegunn/fzf.vim'           " Set up fzf and fzf.vim
 
 " Themes
 Plug 'jpo/vim-railscasts-theme' " Can't change now..
+Plug 'romainl/Apprentice'
+Plug 'jacoborus/tender.vim'
 
 " Language stuff
 Plug 'elixir-lang/vim-elixir'
@@ -41,13 +43,14 @@ Plug 'styled-components/vim-styled-components' " Sounds good?
 
 " ALE
 Plug 'dense-analysis/ale'
+Plug 'ycm-core/YouCompleteMe'
 
 " Code Completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'scrooloose/syntastic'
 
 " Misc
-Plug 'ervandew/supertab'          " Tab completion
+" Plug 'ervandew/supertab'          " Tab completion
 Plug 'psliwka/vim-smoothie'       " Smooth scrolling
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -64,6 +67,12 @@ filetype plugin indent on
 let mapleader = ','
 syntax on
 colorscheme railscasts
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+autocmd FileType c colorscheme tender
 hi Normal guibg=NONE ctermbg=NONE
 
 let &colorcolumn=join(range(101,101),",")
@@ -75,15 +84,25 @@ let g:ale_linters = {
       \ 'c': ['clang-tidy'],
       \ 'h': ['clang-tidy'],
       \ 'cpp': ['clang-tidy'],
+      \ 'ruby': ['rubocop'],
+      \ 'ruby_on_rails': ['rubocop'],
       \ }
 let g:ale_fixers = {
       \ 'c': ['clang-format'],
       \ 'h': ['clang-format'],
       \ 'cpp': ['clang-format'],
+      \ 'ruby': ['rubocop'],
       \ }
 let g:ale_fix_on_save = 1
 let g:ale_set_quickfix = 0
 let g:ale_hover_cursor = 1
+let g:ale_hover_to_preview = 1
+let g:ale_completion_enabled = 1
+
+let g:ycm_enable_semantic_highlighting=1
+
+imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 set background=dark
 set ttyfast
@@ -272,6 +291,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
 " Keymappings
+" iunmap <Tab>
+" iunmap <S-Tab>
+inoremap <expr> <Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<c-p>" : "\<S-Tab>"
 
 " I want to use ; instead of : and I want the original ; as ;;
 map ; :
@@ -326,6 +349,8 @@ let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
+let g:airline#extensions#ale#enabled = 1
+let g:coc_disable_mappings_check = 1
 
 " Tabular mappings (default)
 nmap <leader>a= :Tabularize /=<cr>
