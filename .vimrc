@@ -88,6 +88,8 @@ let g:ale_linters = {
       \ 'ruby_on_rails': ['rubocop'],
       \ }
 let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines'],
+      \ 'yaml': ['prettier'],
       \ 'c': ['clang-format'],
       \ 'h': ['clang-format'],
       \ 'cpp': ['clang-format'],
@@ -103,6 +105,9 @@ let g:ycm_enable_semantic_highlighting=1
 
 imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_ruby_rubocop_options = '-D'
 
 set background=dark
 set ttyfast
