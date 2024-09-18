@@ -101,7 +101,7 @@ let g:ale_hover_cursor = 1
 let g:ale_hover_to_preview = 1
 let g:ale_completion_enabled = 1
 
-let g:ycm_enable_semantic_highlighting=1
+let g:ycm_enable_semantic_highlighting=0
 
 imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
@@ -183,6 +183,7 @@ nnoremap <silent><leader>e :Exp<CR><CR>
 
 " CoC extensions
 let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json']
+let g:coc_disable_mappings_check = 1
 
 " Add CoC Prettier if prettier is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
@@ -348,14 +349,15 @@ endif
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled=1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⎇'
-let g:airline#extensions#whitespace#enabled = 1
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
-let g:airline#extensions#ale#enabled = 1
-let g:coc_disable_mappings_check = 1
+
 
 " Tabular mappings (default)
 nmap <leader>a= :Tabularize /=<cr>
