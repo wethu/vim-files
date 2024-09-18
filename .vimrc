@@ -47,7 +47,7 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-autocmd FileType c colorscheme tender
+" autocmd FileType c colorscheme tender
 hi Normal guibg=NONE ctermbg=NONE
 let &colorcolumn=join(range(101,101),",")
 
@@ -56,7 +56,7 @@ set autoread
 set background=dark
 set backspace=indent,eol,start
 set cindent
-set clipboard=unnamed
+set clipboard=unnamedplus
 set cursorline
 set eol
 set expandtab
@@ -268,8 +268,8 @@ noremap ;; ;
 " Remove hlsearch quickly
 noremap <leader>h :nohlsearch<cr>
 " copy
-nnoremap <C-Y> "*y
-vnoremap <C-Y> "*y
+nnoremap <C-Y> "+y
+vnoremap <C-Y> "+y
 
 " Splits navigation with ctrl+hjkl
 nnoremap <C-J> <C-W><C-J>
